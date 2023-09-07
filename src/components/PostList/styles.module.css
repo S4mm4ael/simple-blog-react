@@ -1,0 +1,17 @@
+.PostList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+}
+
+.PostList h1 {
+  margin-top: 20px;
+}
+
+.PostList__msg {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: gray;
+}

@@ -1,23 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import './styles/App.css'
+import { useState } from "react";
 
+import PostList from './components/PostList/PostList';
+import PostForm from './components/PostForm/PostForm';
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [value, setValue] = useState("TEXT")
+  const [posts, setPosts] = useState([
+    {
+      id: Date.now() + Math.random(),
+      title: "Title 1",
+      body: "aaaaaaaaaaaaaaaa ffffffffffffffff",
+    },
+    {
+      id: Date.now() + Math.random(),
+      title: "Title 2",
+      body: "aaaaaaaaaaaaaaaa ffffffffffffffff",
+    },
+    {
+      id: Date.now() + Math.random(),
+      title: "Title 3",
+      body: "aaaaaaaaaaaaaaaa ffffffffffffffff",
+    },
+  ]);
 
-  function add() {
-    setCount(count + 1)
-    console.log(count)
+  const removePost = (post) => {
+    setPosts(posts.filter((p) => p.id !== post.id))
   }
 
   return (
     <div className="App">
-      <h1>App {value}</h1>
-      <div>{count}</div>
-      <input type="text"
-        onChange={event => setValue(event.target.value)}
-        value={value}></input>
-      <button onClick={() => add()}>Add</button>
+      <PostForm setNewPost={setPosts} posts={posts}></PostForm>
+      <PostList posts={posts} removePost={removePost} />
     </div >
   );
 }
