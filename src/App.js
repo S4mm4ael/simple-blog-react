@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Counter } from './components/Counter';
+import CounterClass from './components/CounterClass';
 
 
 function App() {
   return (
     <div className="App">
       <Counter />
+      <CounterClass />
     </div >
   );
 }

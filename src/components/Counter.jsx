@@ -7,6 +7,7 @@ export const Counter = () => {
     setCount(count + 1);
     console.log(count);
   }
+
   return (
     <div className="">
       <h1>App {count}</h1>
