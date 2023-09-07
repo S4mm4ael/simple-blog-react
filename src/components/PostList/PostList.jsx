@@ -1,12 +1,9 @@
-import { useState } from "react";
 import { Post } from "../Post/Post";
 import styles from "./styles.module.css";
 
-function PostList(props) {
-  const [posts, setPosts] = useState(props.posts);
-
+function PostList({ posts, ...props }) {
   function renderPosts() {
-    return posts.map((post) => <Post post={post} key={post.title} />);
+    return posts.map((post) => <Post post={post} key={post.id} />);
   }
   return (
     <div className={styles.PostList}>

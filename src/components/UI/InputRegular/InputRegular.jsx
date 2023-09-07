@@ -8,6 +8,8 @@ function InputRegular(props) {
       name=""
       id=""
       placeholder={props.placeholder}
+      value={props.value}
+      onChange={(e) => props.setValue(e.target.value)}
     />
   );
 }

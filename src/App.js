@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles/App.css'
+import { useState } from "react";
+
 import PostList from './components/PostList/PostList';
 import PostForm from './components/PostForm/PostForm';
 
 function App() {
-
-  const posts = [
+  const [posts, setPosts] = useState([
     {
       id: Date.now() + Math.random(),
       title: "Title 1",
@@ -21,10 +22,16 @@ function App() {
       title: "Title 3",
       body: "aaaaaaaaaaaaaaaa ffffffffffffffff",
     },
-  ];
+  ]);
+
+  useEffect(() => {
+    console.log(posts)
+  }, [posts])
+
+
   return (
     <div className="App">
-      <PostForm></PostForm>
+      <PostForm setNewPost={setPosts} posts={posts}></PostForm>
       <PostList posts={posts} />
     </div >
   );
