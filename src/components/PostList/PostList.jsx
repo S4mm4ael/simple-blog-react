@@ -1,9 +1,11 @@
 import { Post } from "../Post/Post";
 import styles from "./styles.module.css";
 
-function PostList({ posts, ...props }) {
+function PostList({ posts, removePost, ...props }) {
   function renderPosts() {
-    return posts.map((post) => <Post post={post} key={post.id} />);
+    return posts.map((post) => (
+      <Post removePost={removePost} post={post} key={post.id} />
+    ));
   }
   return (
     <div className={styles.PostList}>

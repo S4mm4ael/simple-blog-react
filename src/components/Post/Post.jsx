@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import ButtonRegular from "../UI/ButtonRegular/ButtonRegular";
 
-export function Post(props) {
+export function Post({ removePost, ...props }) {
   return (
     <div className={styles.Post}>
       <div className={styles.Post__wrapper}>
@@ -11,7 +11,15 @@ export function Post(props) {
         </h3>
         <p className={styles.Post__body}>{props.post.body}</p>
       </div>
-      <ButtonRegular>Delete</ButtonRegular>
+      <ButtonRegular>
+        <span
+          onClick={() => {
+            removePost(props.post);
+          }}
+        >
+          Delete
+        </span>
+      </ButtonRegular>
     </div>
   );
 }

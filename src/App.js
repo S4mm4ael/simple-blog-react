@@ -24,15 +24,14 @@ function App() {
     },
   ]);
 
-  useEffect(() => {
-    console.log(posts)
-  }, [posts])
-
+  const removePost = (post) => {
+    setPosts(posts.filter((p) => p.id !== post.id))
+  }
 
   return (
     <div className="App">
       <PostForm setNewPost={setPosts} posts={posts}></PostForm>
-      <PostList posts={posts} />
+      <PostList posts={posts} removePost={removePost} />
     </div >
   );
 }
