@@ -1,0 +1,19 @@
+.PostForm {
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.PostForm h3 {
+  margin: 0 auto;
+}
+
+.PostForm__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
