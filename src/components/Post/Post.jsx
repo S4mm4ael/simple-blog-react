@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import ButtonRegular from "../UI/ButtonRegular/ButtonRegular";
 
 export function Post(props) {
   return (
@@ -10,7 +11,7 @@ export function Post(props) {
         </h3>
         <p className={styles.Post__body}>{props.post.body}</p>
       </div>
-      <button className="Post__button">Delete</button>
+      <ButtonRegular text="Delete" />
     </div>
   );
 }

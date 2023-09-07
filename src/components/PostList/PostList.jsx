@@ -1,24 +1,10 @@
+import { useState } from "react";
 import { Post } from "../Post/Post";
 import styles from "./styles.module.css";
 
-function PostList() {
-  const posts = [
-    {
-      id: Date.now() + Math.random(),
-      title: "Title 1",
-      body: "aaaaaaaaaaaaaaaa ffffffffffffffff",
-    },
-    {
-      id: Date.now() + Math.random(),
-      title: "Title 2",
-      body: "aaaaaaaaaaaaaaaa ffffffffffffffff",
-    },
-    {
-      id: Date.now() + Math.random(),
-      title: "Title 3",
-      body: "aaaaaaaaaaaaaaaa ffffffffffffffff",
-    },
-  ];
+function PostList(props) {
+  const [posts, setPosts] = useState(props.posts);
+
   function renderPosts() {
     return posts.map((post) => <Post post={post} key={post.title} />);
   }
