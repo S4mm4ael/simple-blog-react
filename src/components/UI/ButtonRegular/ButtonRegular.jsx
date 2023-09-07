@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 
-function ButtonRegular(props) {
-  return <button className={styles.ButtonRegular}>{props.text}</button>;
+function ButtonRegular({ children, ...props }) {
+  return <button className={styles.ButtonRegular}>{children}</button>;
 }
 
 export default ButtonRegular;

@@ -11,7 +11,7 @@ export function Post(props) {
         </h3>
         <p className={styles.Post__body}>{props.post.body}</p>
       </div>
-      <ButtonRegular text="Delete" />
+      <ButtonRegular>Delete</ButtonRegular>
     </div>
   );
 }
