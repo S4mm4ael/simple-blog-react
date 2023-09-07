@@ -1,23 +1,11 @@
 import React, { useState } from 'react';
+import { Counter } from './components/Counter';
 
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [value, setValue] = useState("TEXT")
-
-  function add() {
-    setCount(count + 1)
-    console.log(count)
-  }
-
   return (
     <div className="App">
-      <h1>App {value}</h1>
-      <div>{count}</div>
-      <input type="text"
-        onChange={event => setValue(event.target.value)}
-        value={value}></input>
-      <button onClick={() => add()}>Add</button>
+      <Counter />
     </div >
   );
 }
