@@ -10,10 +10,11 @@
 
 .PostForm h3 {
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .PostForm__form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
