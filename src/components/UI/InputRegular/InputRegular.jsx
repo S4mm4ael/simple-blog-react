@@ -9,7 +9,9 @@ function InputRegular(props) {
       id=""
       placeholder={props.placeholder}
       value={props.value}
-      onChange={(e) => props.setValue(e.target.value)}
+      onChange={(e) =>
+        props.setValue({ ...props.value, query: e.target.value })
+      }
     />
   );
 }
