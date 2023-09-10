@@ -12,7 +12,7 @@ function PostList({ posts, removePost, ...props }) {
       <h1>Post list</h1>
       {renderPosts()}
       {posts.length === 0 && (
-        <p className={styles.PostList__msg}>There is no posts...</p>
+        <p className={styles.PostList__msg}>There is no searched posts...</p>
       )}
     </div>
   );

@@ -11,6 +11,7 @@ function PostFilter({ filter, setFilter }) {
   return (
     <>
       <InputRegular
+        style={{ width: 400 }}
         value={filter.query}
         setValue={setFilter}
         placeholder="Search..."
