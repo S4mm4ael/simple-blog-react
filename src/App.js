@@ -8,6 +8,7 @@ import ModalRegular from './components/UI/ModalRegular/ModalRegular';
 import ButtonRegular from './components/UI/ButtonRegular/ButtonRegular';
 import { usePosts } from './hooks/usePosts';
 import PostService from './API/PostService';
+import Spinner from './components/UI/Spinner/Spinner';
 
 
 function App() {
@@ -33,11 +34,17 @@ function App() {
     query: ''
   })
   const [modal, setModal] = useState(false)
+  const [isPostLoading, setIsPostLoading] = useState(true)
   const searhedSortedPosts = usePosts(posts, filter.sort, filter.query)
 
   async function fetchPosts() {
-    const posts = await PostService.getData()
-    setPosts(posts)
+    setIsPostLoading(true)
+    setTimeout(async () => {
+      const posts = await PostService.getData()
+      setPosts(posts)
+      setIsPostLoading(false)
+    }, 2000)
+
   }
 
   useEffect(() => {
@@ -51,12 +58,17 @@ function App() {
 
   return (
     <div className="App">
-      <ModalRegular visible={modal} setVisible={setModal}><PostForm setNewPost={setPosts} posts={posts} setModal={setModal} /></ModalRegular>
-      <div className='App__wrapper_top'>
-        <ButtonRegular type='create' onClick={() => setModal(true)}>Create a post</ButtonRegular>
-        <PostFilter filter={filter} setFilter={setFilter} />
-      </div>
-      <PostList posts={searhedSortedPosts} removePost={removePost} />
+
+      {isPostLoading ? <Spinner /> :
+        <><ModalRegular visible={modal} setVisible={setModal}><PostForm setNewPost={setPosts} posts={posts} setModal={setModal} /></ModalRegular>
+          <div className='App__wrapper_top'>
+            <ButtonRegular type='create' onClick={() => setModal(true)}>Create a post</ButtonRegular>
+            <PostFilter filter={filter} setFilter={setFilter} />
+          </div>
+
+          <PostList posts={searhedSortedPosts} removePost={removePost} /></>
+
+      }
     </div >
   );
 }
