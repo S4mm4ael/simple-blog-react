@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SelectRegular from "../UI/SelectRegular/SelectRegular";
-import InputRegular from "../UI/InputRegular/InputRegular";
+import SearchBar from "../UI/SearchBar/SearchBar";
 
 function PostFilter({ filter, setFilter }) {
   const [sortOptions, setSortOptions] = useState([
@@ -10,11 +10,11 @@ function PostFilter({ filter, setFilter }) {
 
   return (
     <>
-      <InputRegular
+      <SearchBar
         style={{ width: 400 }}
         value={filter.query}
         setValue={setFilter}
-        placeholder="Search..."
+        placeholder="Search by title..."
       />
       <SelectRegular
         value={filter.sort}

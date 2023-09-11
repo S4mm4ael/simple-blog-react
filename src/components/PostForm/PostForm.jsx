@@ -3,7 +3,7 @@ import ButtonRegular from "../UI/ButtonRegular/ButtonRegular";
 import InputRegular from "../UI/InputRegular/InputRegular";
 import styles from "./styles.module.css";
 
-function PostForm({ setNewPost, posts, ...props }) {
+function PostForm({ setNewPost, posts }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -28,9 +28,9 @@ function PostForm({ setNewPost, posts, ...props }) {
         <InputRegular
           placeholder="Post title"
           value={title}
-          setValue={setTitle}
+          onChange={setTitle}
         />
-        <InputRegular placeholder="Post body" value={body} setValue={setBody} />
+        <InputRegular placeholder="Post body" value={body} onChange={setBody} />
         <ButtonRegular>Add new post</ButtonRegular>
       </form>
     </div>
