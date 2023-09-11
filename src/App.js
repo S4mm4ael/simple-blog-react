@@ -7,10 +7,11 @@ import PostFilter from './components/PostFilter/PostFilter';
 import ModalRegular from './components/UI/ModalRegular/ModalRegular';
 import ButtonRegular from './components/UI/ButtonRegular/ButtonRegular';
 import { usePosts } from './hooks/usePosts';
+import Pagination from './components/UI/Pagination/Pagination';
 import PostService from './API/PostService';
 import Spinner from './components/UI/Spinner/Spinner';
 import { useFetch } from './hooks/useFetch';
-import { getPageCount } from './utils/pages';
+import { getPageCount, getPagesArray } from './utils/pages';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -31,9 +32,12 @@ function App() {
     setTotalPages(getPageCount(totalCount, limit))
   })
 
+  let pagesArray = getPagesArray(totalPages)
+
   useEffect(() => {
     fetchPosts()
-  }, [])
+  }, [page])
+
 
   const removePost = (post) => {
     setPosts(posts.filter((p) => p.id !== post.id))
@@ -47,10 +51,14 @@ function App() {
             <ButtonRegular type='create' onClick={() => setModal(true)}>Create a post</ButtonRegular>
             <PostFilter filter={filter} setFilter={setFilter} />
           </div>
-          <PostList posts={searhedSortedPosts} removePost={removePost} /></>
+          <PostList posts={searhedSortedPosts} removePost={removePost} />
+          <Pagination pagesArray={pagesArray} setPage={setPage} page={page} ></Pagination>
+        </>
       }
       {postError && <h2 style={{ color: 'red' }}>Error - ${postError}</h2>}
+
     </div >
+
   );
 }
 
