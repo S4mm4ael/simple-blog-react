@@ -6,6 +6,7 @@ function Header() {
     <div className="App__header">
       <Link to="/">main</Link>
       <Link to="/about">about</Link>
+      <Link to="/error">404</Link>
     </div>
   );
 }
