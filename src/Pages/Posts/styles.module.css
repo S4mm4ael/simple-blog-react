@@ -1,0 +1,19 @@
+.Posts {
+  min-width: 100vh;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #FBAB7E;
+  background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Posts__wrapper_top {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
