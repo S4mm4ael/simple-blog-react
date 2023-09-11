@@ -9,47 +9,30 @@ import ButtonRegular from './components/UI/ButtonRegular/ButtonRegular';
 import { usePosts } from './hooks/usePosts';
 import PostService from './API/PostService';
 import Spinner from './components/UI/Spinner/Spinner';
-
+import { useFetch } from './hooks/useFetch';
+import { getPageCount } from './utils/pages';
 
 function App() {
-  const [posts, setPosts] = useState([
-    {
-      id: Date.now() + Math.random(),
-      title: "Title 4",
-      body: "aaaaaaaaaaaaaaaa ffffffffffffffff",
-    },
-    {
-      id: Date.now() + Math.random(),
-      title: "Title 2",
-      body: "ffffffffffffffff sssssssss",
-    },
-    {
-      id: Date.now() + Math.random(),
-      title: "Title 3",
-      body: "ffffffffffffffff wwwwwwwwwwwwS",
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
   const [filter, setFilter] = useState({
     sort: '',
     query: ''
   })
-  const [modal, setModal] = useState(false)
-  const [isPostLoading, setIsPostLoading] = useState(true)
+  const [modal, setModal] = useState(false);
+
   const searhedSortedPosts = usePosts(posts, filter.sort, filter.query)
-
-  async function fetchPosts() {
-    setIsPostLoading(true)
-    setTimeout(async () => {
-      const posts = await PostService.getData()
-      setPosts(posts)
-      setIsPostLoading(false)
-    }, 2000)
-
-  }
+  const [fetchPosts, isPostLoading, postError] = useFetch(async () => {
+    const response = await PostService.getData(limit, page);
+    setPosts(response.data)
+    const totalCount = response.headers['x-total-count']
+    setTotalPages(getPageCount(totalCount, limit))
+  })
 
   useEffect(() => {
     fetchPosts()
-
   }, [])
 
   const removePost = (post) => {
@@ -58,17 +41,15 @@ function App() {
 
   return (
     <div className="App">
-
-      {isPostLoading ? <Spinner /> :
+      {isPostLoading && postError ? <Spinner /> :
         <><ModalRegular visible={modal} setVisible={setModal}><PostForm setNewPost={setPosts} posts={posts} setModal={setModal} /></ModalRegular>
           <div className='App__wrapper_top'>
             <ButtonRegular type='create' onClick={() => setModal(true)}>Create a post</ButtonRegular>
             <PostFilter filter={filter} setFilter={setFilter} />
           </div>
-
           <PostList posts={searhedSortedPosts} removePost={removePost} /></>
-
       }
+      {postError && <h2 style={{ color: 'red' }}>Error - ${postError}</h2>}
     </div >
   );
 }
