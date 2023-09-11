@@ -1,13 +1,12 @@
 import styles from "./styles.module.css";
 
-function ModalRegular({ children }) {
-  return (
-    <div
-      className={[styles.ModalRegular, styles.ModalRegular_active].join(" ")}
-    >
-      {children}
-    </div>
-  );
+function ModalRegular({ children, visible, setVisible }) {
+  const classes = [styles.ModalRegular];
+  if (visible) {
+    classes.push(styles.ModalRegular_active);
+  }
+
+  return <div className={classes.join(" ")}>{children}</div>;
 }
 
 export default ModalRegular;

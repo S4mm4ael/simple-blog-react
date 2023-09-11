@@ -6,6 +6,7 @@ import PostList from './components/PostList/PostList';
 import PostForm from './components/PostForm/PostForm';
 import PostFilter from './components/PostFilter/PostFilter';
 import ModalRegular from './components/UI/ModalRegular/ModalRegular';
+import ButtonRegular from './components/UI/ButtonRegular/ButtonRegular';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -29,6 +30,7 @@ function App() {
     sort: '',
     query: ''
   })
+  const [modal, setModal] = useState(false)
 
   const sortedPosts = useMemo(() => {
     if (filter.sort) {
@@ -48,9 +50,9 @@ function App() {
 
   return (
     <div className="App">
-      <ModalRegular ><PostForm setNewPost={setPosts} posts={posts} /></ModalRegular>
+      <ModalRegular visible={modal} setVisible={setModal}><PostForm setNewPost={setPosts} posts={posts} /></ModalRegular>
       <div className='App__wrapper_top'>
-
+        <ButtonRegular type='create' onClick={() => setModal(true)}>Create a post</ButtonRegular>
         <PostFilter filter={filter} setFilter={setFilter} />
       </div>
       <PostList posts={searhedSortedPosts} removePost={removePost} />

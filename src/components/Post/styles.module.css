@@ -15,4 +15,16 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 90%;
+}
+
+.Post__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Post__id {
+  color: gainsboro;
+  font-size: 0.7rem;
 }

@@ -11,7 +11,7 @@ function PostForm({ setNewPost, posts }) {
     e.preventDefault();
     if ((title, body)) {
       const newPost = {
-        id: Date.now() + Math.random(),
+        id: (Date.now() + Math.random()).toString().slice(-6),
         title: title,
         body: body,
       };
@@ -31,7 +31,7 @@ function PostForm({ setNewPost, posts }) {
           onChange={setTitle}
         />
         <InputRegular placeholder="Post body" value={body} onChange={setBody} />
-        <ButtonRegular>Add new post</ButtonRegular>
+        <ButtonRegular type="add">Add new post</ButtonRegular>
       </form>
     </div>
   );

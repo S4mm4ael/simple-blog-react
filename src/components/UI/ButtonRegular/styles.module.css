@@ -13,9 +13,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 10%;
   background: rgba(255, 255, 255, 0.2);
 }
 
 .ButtonRegular:hover {
   box-shadow: rgb(255, 255, 255) 0px 5px 15px;
+}
+
+.ButtonRegular_create {
+  width: 20%;
+}
+
+.ButtonRegular_add {
+  width: 100%;
+}
+
+.ButtonRegular_add:hover {
+  box-shadow: rgb(0, 255, 0) 0px 5px 15px;
 }
