@@ -7,6 +7,7 @@ import PostForm from './components/PostForm/PostForm';
 import PostFilter from './components/PostFilter/PostFilter';
 import ModalRegular from './components/UI/ModalRegular/ModalRegular';
 import ButtonRegular from './components/UI/ButtonRegular/ButtonRegular';
+import { usePosts } from './hooks/usePosts';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -31,18 +32,9 @@ function App() {
     query: ''
   })
   const [modal, setModal] = useState(false)
+  const searhedSortedPosts = usePosts(posts, filter.sort, filter.query)
 
-  const sortedPosts = useMemo(() => {
-    if (filter.sort) {
-      return [...posts].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]))
-    }
 
-    return posts
-  }, [filter.sort, posts])
-
-  const searhedSortedPosts = useMemo(() => {
-    return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.query.toLowerCase()))
-  }, [filter.query, sortedPosts])
 
   const removePost = (post) => {
     setPosts(posts.filter((p) => p.id !== post.id))
