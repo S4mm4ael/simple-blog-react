@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles/App.css'
-import { useState, useMemo } from "react";
 
 import PostList from './components/PostList/PostList';
 import PostForm from './components/PostForm/PostForm';
@@ -8,6 +7,8 @@ import PostFilter from './components/PostFilter/PostFilter';
 import ModalRegular from './components/UI/ModalRegular/ModalRegular';
 import ButtonRegular from './components/UI/ButtonRegular/ButtonRegular';
 import { usePosts } from './hooks/usePosts';
+import PostService from './API/PostService';
+
 
 function App() {
   const [posts, setPosts] = useState([
@@ -34,7 +35,15 @@ function App() {
   const [modal, setModal] = useState(false)
   const searhedSortedPosts = usePosts(posts, filter.sort, filter.query)
 
+  async function fetchPosts() {
+    const posts = await PostService.getData()
+    setPosts(posts)
+  }
 
+  useEffect(() => {
+    fetchPosts()
+
+  }, [])
 
   const removePost = (post) => {
     setPosts(posts.filter((p) => p.id !== post.id))
