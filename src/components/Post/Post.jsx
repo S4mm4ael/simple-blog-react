@@ -12,14 +12,12 @@ export function Post({ removePost, ...props }) {
         </h3>
         <p className={styles.Post__body}>{props.post.body}</p>
       </div>
-      <ButtonRegular>
-        <span
-          onClick={() => {
-            removePost(props.post);
-          }}
-        >
-          Delete
-        </span>
+      <ButtonRegular
+        onClick={() => {
+          removePost(props.post);
+        }}
+      >
+        <span>Delete</span>
       </ButtonRegular>
     </div>
   );

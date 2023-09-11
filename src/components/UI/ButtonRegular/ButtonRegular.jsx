@@ -22,7 +22,11 @@ function ButtonRegular({ children, remove, type, onClick }) {
       </button>
     );
   }
-  return <button className={styles.ButtonRegular}>{children}</button>;
+  return (
+    <button onClick={onClick} className={styles.ButtonRegular}>
+      {children}
+    </button>
+  );
 }
 
 export default ButtonRegular;
