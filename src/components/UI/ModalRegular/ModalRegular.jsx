@@ -6,7 +6,16 @@ function ModalRegular({ children, visible, setVisible }) {
     classes.push(styles.ModalRegular_active);
   }
 
-  return <div className={classes.join(" ")}>{children}</div>;
+  return (
+    <div className={classes.join(" ")} onClick={() => setVisible(false)}>
+      <div
+        className={styles.ModalRegular__content}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {children}
+      </div>
+    </div>
+  );
 }
 
 export default ModalRegular;

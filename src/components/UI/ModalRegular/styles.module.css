@@ -17,5 +17,5 @@
 .ModalRegular__content {
   padding: 30px;
   border-radius: 20px;
-  min-width: 250px;
+  width: 300px;
 }

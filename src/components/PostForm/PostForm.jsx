@@ -3,7 +3,7 @@ import ButtonRegular from "../UI/ButtonRegular/ButtonRegular";
 import InputRegular from "../UI/InputRegular/InputRegular";
 import styles from "./styles.module.css";
 
-function PostForm({ setNewPost, posts }) {
+function PostForm({ setNewPost, posts, setModal }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -18,6 +18,7 @@ function PostForm({ setNewPost, posts }) {
       setNewPost([...posts, newPost]);
       setTitle("");
       setBody("");
+      setModal(false);
     }
   }
 

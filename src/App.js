@@ -50,7 +50,7 @@ function App() {
 
   return (
     <div className="App">
-      <ModalRegular visible={modal} setVisible={setModal}><PostForm setNewPost={setPosts} posts={posts} /></ModalRegular>
+      <ModalRegular visible={modal} setVisible={setModal}><PostForm setNewPost={setPosts} posts={posts} setModal={setModal} /></ModalRegular>
       <div className='App__wrapper_top'>
         <ButtonRegular type='create' onClick={() => setModal(true)}>Create a post</ButtonRegular>
         <PostFilter filter={filter} setFilter={setFilter} />
