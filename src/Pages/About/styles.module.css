@@ -4,6 +4,7 @@
   align-items: center;
   flex-direction: column;
   gap: 10px;
+  padding: 20px;
 }
 
 .About__logo {
