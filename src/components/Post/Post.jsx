@@ -7,18 +7,17 @@ export function Post({ removePost, ...props }) {
     <div className={styles.Post}>
       <div className={styles.Post__wrapper}>
         <h3 className={styles.Post__header}>
-          {props.post.title} - {props.post.id}
+          {props.post.title}{" "}
+          <span className={styles.Post__id}>ID: {props.post.id}</span>
         </h3>
         <p className={styles.Post__body}>{props.post.body}</p>
       </div>
-      <ButtonRegular>
-        <span
-          onClick={() => {
-            removePost(props.post);
-          }}
-        >
-          Delete
-        </span>
+      <ButtonRegular
+        onClick={() => {
+          removePost(props.post);
+        }}
+      >
+        <span>Delete</span>
       </ButtonRegular>
     </div>
   );

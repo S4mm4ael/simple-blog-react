@@ -3,7 +3,7 @@ import ButtonRegular from "../UI/ButtonRegular/ButtonRegular";
 import InputRegular from "../UI/InputRegular/InputRegular";
 import styles from "./styles.module.css";
 
-function PostForm({ setNewPost, posts, ...props }) {
+function PostForm({ setNewPost, posts, setModal }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -11,13 +11,14 @@ function PostForm({ setNewPost, posts, ...props }) {
     e.preventDefault();
     if ((title, body)) {
       const newPost = {
-        id: Date.now() + Math.random(),
+        id: (Date.now() + Math.random()).toString().slice(-6),
         title: title,
         body: body,
       };
       setNewPost([...posts, newPost]);
       setTitle("");
       setBody("");
+      setModal(false);
     }
   }
 
@@ -28,10 +29,10 @@ function PostForm({ setNewPost, posts, ...props }) {
         <InputRegular
           placeholder="Post title"
           value={title}
-          setValue={setTitle}
+          onChange={setTitle}
         />
-        <InputRegular placeholder="Post body" value={body} setValue={setBody} />
-        <ButtonRegular>Add new post</ButtonRegular>
+        <InputRegular placeholder="Post body" value={body} onChange={setBody} />
+        <ButtonRegular type="add">Add new post</ButtonRegular>
       </form>
     </div>
   );

@@ -5,11 +5,11 @@ function InputRegular(props) {
     <input
       className={styles.InputRegular}
       type="text"
-      name=""
+      name={props.placeholder}
       id=""
       placeholder={props.placeholder}
       value={props.value}
-      onChange={(e) => props.setValue(e.target.value)}
+      onChange={(e) => props.onChange(e.target.value)}
     />
   );
 }
